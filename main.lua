@@ -26,7 +26,7 @@ function mod:COMBAT_LOG_EVENT_UNFILTERED(time, kind, hideCaster,
       string.format("Interrupted %s's %s (%2.2fs into cast)", dstName, GetSpellLink(extraSpellID), time - casts[dstGUID]) or
       string.format("Interrupted %s's %s", dstName, GetSpellLink(extraSpellID))
 
-    SendChatMessage(message, GetRealNumRaidMembers() > 0 and 'RAID' or GetRealNumPartyMembers() > 0 and 'PARTY' or 'SAY')
+    SendChatMessage(message, IsInRaid() and 'RAID' or GetNumSubgroupMembers() > 0 and 'PARTY' or 'SAY')
   end
 
   return true
